@@ -1,0 +1,7 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/ocfb", "destination": "/OCFB.html" },
+    { "source": "/ocfb-conteudo", "destination": "/OCFB-conteudo.html" }
+  ]
+}
