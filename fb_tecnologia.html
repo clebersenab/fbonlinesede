@@ -167,7 +167,10 @@ h2{font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-.025em;max-wi
 .slide.go .tl::after{width:100%}
 .tl>div{padding-right:36px;position:relative}
 .tl .dt{width:32px;height:32px;border-radius:50%;background:var(--s1);border:2px solid var(--g);color:var(--g2);font-family:var(--hd);font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-bottom:20px;position:relative;z-index:1}
-.tl>div:first-child .dt{background:var(--g);color:var(--ink)}
+.tl .dt{transition:background .3s,color .3s,transform .3s var(--ease),box-shadow .3s}
+.tl h3{transition:color .3s}
+.tl>div:hover h3{color:var(--g2)}
+.tl>div:hover .dt{background:var(--g);color:var(--ink);transform:scale(1.12);box-shadow:0 0 0 6px rgba(91,191,142,.15)}
 .tl h3{font-size:21px;font-weight:600;margin-bottom:8px}
 .tl p{font-size:15px;line-height:1.55;color:var(--tx2);max-width:32ch}
 .badge{display:inline-block;font-size:13px;color:var(--lime);background:rgba(214,252,170,.08);border:1px solid rgba(214,252,170,.35);border-radius:999px;padding:4px 12px;margin-left:12px;vertical-align:middle;font-family:var(--bd);font-weight:500}
@@ -826,7 +829,7 @@ document.querySelectorAll('.vbtn,.vthumb').forEach(b=>b.addEventListener('click'
   vm.classList.add('on');vm.setAttribute('aria-hidden','false')}));
 vm.addEventListener('click',e=>{if(e.target===vm||e.target.classList.contains('vclose'))vclose()});
 
-document.querySelectorAll('.stp .blk,.pp,.nd,.cn4,.chn,.fk-out>div,.fk-src,.core,.sat,.nx,.tl>div,.pack').forEach(el=>{
+document.querySelectorAll('.stp .blk,.pp,.nd,.cn4,.chn,.fk-out>div,.fk-src,.core,.sat,.nx,.pack').forEach(el=>{
   if(getComputedStyle(el).position==='static')el.style.position='relative';
   el.classList.add('hc');const g=document.createElement('span');g.className='glow';g.setAttribute('aria-hidden','true');el.prepend(g);
   el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top)+'px')});
