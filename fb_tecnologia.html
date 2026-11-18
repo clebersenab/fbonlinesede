@@ -381,6 +381,28 @@ h2{font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-.025em;max-wi
 @media(hover:none){.hc:hover{translate:none;box-shadow:none}}
 @media(prefers-reduced-motion:reduce){.hc:hover{translate:none}}
 
+/* ===== nova unidade ===== */
+.ff{display:grid;grid-template-columns:380px 1fr;gap:52px;margin-top:28px;align-items:center}
+.ff .vs{margin-top:0}
+.ff .vh,.ff .vr{grid-template-columns:170px 1fr 1.3fr;gap:18px;padding:12px 0}
+.ff .vr b{font-size:16px}.ff .vr span{font-size:14px}
+.bu{display:flex;flex-direction:column;align-items:stretch}
+.bu-src,.bu-ch{display:grid;grid-template-columns:1fr auto 1.4fr;gap:8px;align-items:stretch}
+.bu-src .plus{align-self:center}
+.hc-b{display:flex;flex-direction:column;justify-content:center}
+.bu-ch{grid-template-columns:1fr 1fr;gap:10px}
+.hc-b{background:var(--s1);border:1px solid var(--rule);border-radius:12px;padding:12px 14px;text-align:center}
+.hc-b b{display:block;font-family:var(--hd);font-size:15px;font-weight:600;line-height:1.25}
+.hc-b small{display:block;font-size:12.5px;color:var(--mut);margin-top:3px}
+.hc-b.on{border-color:var(--g)}.hc-b.on small{color:var(--g2)}
+.plus{font-family:var(--hd);font-size:22px;color:var(--g2)}
+.bu-down{height:28px;position:relative}
+.bu-down::before{content:"";position:absolute;left:50%;top:4px;bottom:8px;width:2px;background:var(--g);transform:translateX(-50%)}
+.bu-down::after{content:"";position:absolute;left:calc(50% - 6px);bottom:2px;border:6px solid transparent;border-top-color:var(--g);border-bottom:0}
+.bu-mid{background:var(--gd);border:1px solid var(--g);border-radius:12px;padding:14px;text-align:center;color:#fff}
+.bu-mid b{display:block;font-family:var(--hd);font-size:18px;font-weight:600}
+.bu-mid small{display:block;font-size:12.5px;color:var(--lime);margin-top:3px}
+
 /* next */
 .next{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;margin-top:32px;border-top:1px solid var(--rule)}
 .nx{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:22px 0;border-bottom:1px solid var(--rule)}
@@ -416,10 +438,11 @@ h2{font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-.025em;max-wi
   .arco{grid-template-columns:1fr;gap:24px}
   .vcol{max-width:420px}
   .arco .md{grid-template-columns:1fr auto}
+  .ff{grid-template-columns:1fr;gap:28px}
   .vh{display:none}
   .vr{grid-template-columns:1fr;gap:4px}
   .vr span:nth-child(2)::before{content:"Meu Arco: ";color:var(--mut)}
-  .vr span:last-child::before{content:"SFB: ";color:var(--g2)}
+  .vr span:last-child::before{content:"Nova unidade: ";color:var(--g2)}
   .waf{max-width:none}
   .grid{gap:4px}
   .wt{font-size:32px}
@@ -752,15 +775,31 @@ h2{font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-.025em;max-wi
 <section class="slide" aria-label="Como fazer frente">
   <div class="wrap">
     <p class="lbl in">Como fazer frente</p>
-    <h2 class="in d1">O SFB precisa da sua plataforma, e o FB é onde ela nasce.</h2>
-    <p class="lead in d1">Nossa leitura: a Arco usa a plataforma para segurar as escolas no seu sistema de ensino, já que o pedagógico será só para quem usa os sistemas Arco. Sem algo equivalente, o SFB disputa escolas em desvantagem.</p>
-    <div class="vs in d2">
-      <div class="vh"><span></span><span>Meu Arco</span><span>Proposta para o SFB</span></div>
-      <div class="vr"><b>Comunicação e agenda</b><span>Disponível</span><span>Etapa 1: nasce no FB, no lugar da AgendaEdu</span></div>
-      <div class="vr"><b>Matrícula online</b><span>Disponível</span><span>Logo depois da Etapa 1</span></div>
-      <div class="vr"><b>Painel de gestão</b><span>Disponível</span><span>Construído sobre os dados das etapas anteriores</span></div>
-      <div class="vr"><b>Financeiro</b><span>isaac</span><span>Integrar com a cobrança que o FB já tem, sem reconstruir</span></div>
-      <div class="vr hi"><b>Pedagógico</b><span>Previsto, só sistemas Arco</span><span>Diferencial: conteúdo do FB Online e do SFB, com aulas, simulados e olimpíadas</span></div>
+    <h2 class="in d1">Uma nova unidade de negócio, nascida da parceria.</h2>
+    <p class="lead in d1">A plataforma surge da nova unidade de negócio criada pela parceria entre o FB e a empresa de Cleber e Wedson. O SFB, com a Santillana, é um canal importante para levá-la às escolas.</p>
+    <div class="ff in d2">
+      <div class="bu">
+        <div class="bu-src">
+          <div class="hc-b"><b>FB</b><small>cliente zero</small></div>
+          <span class="plus">+</span>
+          <div class="hc-b"><b>Empresa de Cleber e Wedson</b><small>desenvolvimento</small></div>
+        </div>
+        <div class="bu-down"></div>
+        <div class="bu-mid"><b>Nova unidade de negócio</b><small>dona da plataforma</small></div>
+        <div class="bu-down"></div>
+        <div class="bu-ch">
+          <div class="hc-b on"><b>SFB e Santillana</b><small>canal importante</small></div>
+          <div class="hc-b"><b>Canal próprio</b><small>da unidade</small></div>
+        </div>
+      </div>
+      <div class="vs">
+        <div class="vh"><span></span><span>Meu Arco</span><span>Nova unidade</span></div>
+        <div class="vr"><b>Comunicação e agenda</b><span>Disponível</span><span>Etapa 1, no lugar da AgendaEdu</span></div>
+        <div class="vr"><b>Matrícula online</b><span>Disponível</span><span>Logo depois da Etapa 1</span></div>
+        <div class="vr"><b>Painel de gestão</b><span>Disponível</span><span>Sobre os dados das etapas anteriores</span></div>
+        <div class="vr"><b>Financeiro</b><span>isaac</span><span>Integrar com a cobrança do FB</span></div>
+        <div class="vr hi"><b>Pedagógico</b><span>Previsto, só sistemas Arco</span><span>Diferencial: conteúdo do FB Online e do SFB</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -829,7 +868,7 @@ document.querySelectorAll('.vbtn,.vthumb').forEach(b=>b.addEventListener('click'
   vm.classList.add('on');vm.setAttribute('aria-hidden','false')}));
 vm.addEventListener('click',e=>{if(e.target===vm||e.target.classList.contains('vclose'))vclose()});
 
-document.querySelectorAll('.stp .blk,.pp,.nd,.cn4,.chn,.fk-out>div,.fk-src,.core,.sat,.nx,.pack').forEach(el=>{
+document.querySelectorAll('.hc-b,.bu-mid,.stp .blk,.pp,.nd,.cn4,.chn,.fk-out>div,.fk-src,.core,.sat,.nx,.pack').forEach(el=>{
   if(getComputedStyle(el).position==='static')el.style.position='relative';
   el.classList.add('hc');const g=document.createElement('span');g.className='glow';g.setAttribute('aria-hidden','true');el.prepend(g);
   el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top)+'px')});
