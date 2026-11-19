@@ -441,6 +441,24 @@ h2{font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-.025em;max-wi
 .prd-f{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;margin-top:20px;padding:14px 20px;border-radius:12px;background:linear-gradient(90deg,rgba(91,191,142,.14),rgba(91,191,142,0));font-size:15px;color:var(--tx2)}
 .prd-f b{color:var(--tx);font-family:var(--hd);font-weight:600}
 
+/* ===== resumo ===== */
+.rs{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;margin-top:26px}
+.rp{padding:16px 0 16px 20px;border-left:2px solid var(--g)}
+.rp+.rp{margin-top:6px}
+.rp h3{font-size:21px;font-weight:600;margin-bottom:5px}
+.rp p{font-size:15.5px;line-height:1.55;color:var(--tx2);max-width:52ch}
+.rs-r{display:flex;flex-direction:column;gap:12px}
+.rs-r .pp{padding:16px 18px;background:var(--s1);border:1px solid var(--rule);border-radius:14px;border-left:1px solid var(--rule)}
+.rs-r .pp+.pp{padding-left:18px}
+.rs-r .mono{flex-basis:52px;height:52px;font-size:20px}
+.rs-r .pp h3{font-size:19px}.rs-r .pp p{font-size:14px}
+.rs-n{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px}
+.rs-n .num{font-size:36px}
+.rs-n p{font-size:13.5px;color:var(--tx2)}
+.rq{margin-top:26px;padding:14px 20px;border-radius:12px;background:linear-gradient(90deg,rgba(91,191,142,.12),rgba(91,191,142,0));display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px}
+.rq p{font-family:var(--hd);font-size:18px;font-weight:500;color:var(--tx)}
+.rq span{font-size:13.5px;color:var(--g2)}
+
 /* next */
 .next{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;margin-top:32px;border-top:1px solid var(--rule)}
 .nx{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:22px 0;border-bottom:1px solid var(--rule)}
@@ -478,6 +496,8 @@ h2{font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-.025em;max-wi
   .vcol{max-width:420px}
   .arco .md{grid-template-columns:1fr auto}
   .shift{margin:0;max-width:none}
+  .rs{grid-template-columns:1fr;gap:28px}
+  .rs-n .num{font-size:30px}
   .prd{grid-template-columns:1fr}
   .prd-f{grid-template-columns:1fr;gap:6px}
   .lbrand .lchip{height:46px}
@@ -540,8 +560,8 @@ h2{font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-.025em;max-wi
   <div class="wrap split">
     <div>
       <p class="lbl">Proposta à direção do FB</p>
-      <h1>Uma nova unidade de negócio em tecnologia para escolas.</h1>
-      <p class="lead">O FB deixa de só comprar sistemas e passa a criá-los e vendê-los, em parceria com Cleber e Wedson. Cleber deixa a gestão do dia a dia do FB Online, permanecendo como conselheiro, para liderar essa construção.</p>
+      <h1>Uma proposta de Cleber e Wedson Lima.</h1>
+      <p class="lead">Uma nova unidade de negócio em tecnologia para escolas, criada em parceria com o FB.</p>
       <p class="meta">Novembro de 2026</p>
     </div>
     <div class="shift" aria-label="Hoje o FB compra tecnologia. Na proposta, o FB também vende tecnologia.">
@@ -549,6 +569,29 @@ h2{font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-.025em;max-wi
       <div class="sh-ar" aria-hidden="true"></div>
       <div class="sh-c sh-new"><small>Proposta</small><b>O FB também vende tecnologia</b><p>Soluções que nascem no FB e chegam a outras escolas, pela rede SFB e por um canal próprio.</p></div>
     </div>
+  </div>
+</section>
+
+<section class="slide" aria-label="Resumo">
+  <div class="wrap">
+    <p class="lbl in">Em resumo</p>
+    <h2 class="in d1">O que estamos propondo, e quem propõe.</h2>
+    <div class="rs in d2">
+      <div class="rs-l">
+        <div class="rp"><h3>Uma nova unidade de negócio</h3><p>Em parceria com o FB, desenvolver sistemas para escolas e vendê-los pela rede SFB, com a Santillana, e por um canal próprio.</p></div>
+        <div class="rp"><h3>O FB como cliente zero</h3><p>Cada solução nasce resolvendo um problema real do FB, que passa a pagar ~30% menos por ela.</p></div>
+        <div class="rp"><h3>Uma nova função para Cleber</h3><p>Deixa a gestão do dia a dia do FB Online e permanece como conselheiro. Pedro Tredezini assume a gestão.</p></div>
+      </div>
+      <div class="rs-r">
+        <div class="pp"><div class="mono">C</div><div><h3>Cleber</h3><p>Fundador do FB Online e hoje gestor da operação. Formado em Computação, com MBA em Gestão de Projetos.</p></div></div>
+        <div class="pp"><div class="mono">W</div><div><h3>Wedson Lima</h3><p>Também fundador do FB Online. Formado em Computação, ao sair do FB Online foi integrar o time da Nomad.</p></div></div>
+        <div class="rs-n">
+          <div><div class="num g" data-count="300" data-prefix="+" data-suffix=" mil">+300 mil</div><p>alunos na plataforma do FB Online</p></div>
+          <div><div class="num g" data-count="30" data-prefix="+R$ " data-suffix=" mi">+R$ 30 mi</div><p>vendidos em cursos e materiais digitais</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="rq in d3"><p>Que todo sistema do FB rode como roda o FB Online: sempre disponível, rápido e fácil de usar.</p><span>Como costuma dizer o Professor Marcelo Pena</span></div>
   </div>
 </section>
 
@@ -694,23 +737,6 @@ h2{font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-.025em;max-wi
   </div>
 </section>
 
-<section class="slide" aria-label="Quem propõe">
-  <div class="wrap">
-    <p class="lbl in">Quem constrói</p>
-    <h2 class="in d1">Os fundadores do FB Online.</h2>
-    <p class="lead in d1">Construímos o FB Online do zero. A proposta é que todo sistema do FB rode como roda o FB Online: sempre disponível, rápido e fácil de usar.</p>
-    <p class="cite in d1">Como costuma dizer o Professor Marcelo Pena.</p>
-    <div class="people in d2">
-      <div class="pp"><div class="mono">C</div><div><h3>Cleber</h3><p>Fundador do FB Online e hoje gestor da operação. Formado em Computação, com MBA em Gestão de Projetos.</p></div></div>
-      <div class="pp"><div class="mono">W</div><div><h3>Wedson Lima</h3><p>Também fundador do FB Online. Formado em Computação, ao sair do FB Online foi integrar o time da Nomad.</p></div></div>
-    </div>
-    <div class="row3 in d3" style="margin-top:0">
-      <div><div class="num g" data-count="300" data-prefix="+" data-suffix=" mil">+300 mil</div><p>alunos passaram pela plataforma do FB Online</p></div>
-      <div><div class="num g" data-count="30" data-prefix="+R$ " data-suffix=" mi">+R$ 30 mi</div><p>vendidos em cursos e materiais digitais</p></div>
-      <div><div class="num" style="font-size:38px;padding-top:12px">ENEM, Medicina, ITA/IME</div><p>preparações em que o FB Online virou referência</p></div>
-    </div>
-  </div>
-</section>
 
 <section class="slide" aria-label="Por que não só internamente">
   <div class="wrap">
