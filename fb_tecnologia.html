@@ -78,7 +78,7 @@ button{font:inherit}
 h2{font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-.025em;max-width:none;text-wrap:pretty;margin-bottom:20px}
 .lead{font-size:18px;line-height:1.6;color:var(--tx2);max-width:none;text-wrap:pretty}
 .lead b{color:var(--tx);font-weight:600}
-.note{font-size:13px;color:var(--mut);margin-top:20px;max-width:72ch}
+.note{font-size:13px;color:var(--mut);margin-top:20px;max-width:none}
 .num{font-family:var(--hd);font-weight:600;letter-spacing:-.03em;line-height:1;color:var(--tx)}
 .num.g{color:var(--g2)}
 
@@ -143,6 +143,7 @@ h2{font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-.025em;max-wi
 .org h3{font-size:15px;font-weight:500;color:var(--mut);margin-bottom:14px}
 .org .col{display:flex;flex-direction:column}
 .org .today{padding-right:40px;border-right:1px dashed var(--rule)}
+.org .today>.cn{margin:14px 0}
 .og{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;grid-template-rows:auto auto auto}
 .nd{background:var(--s1);border:1px solid var(--rule);border-radius:12px;padding:14px 16px;text-align:center}
 .nd b{display:block;font-family:var(--hd);font-size:18px;font-weight:600}
@@ -179,7 +180,7 @@ h2{font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-.025em;max-wi
 .succ{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;padding:22px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-top:8px}
 .succ .mono{width:72px;height:72px;font-size:28px}
 .succ h3{font-size:24px;font-weight:600;margin-bottom:4px}
-.succ p{color:var(--tx2);font-size:15.5px;line-height:1.55;max-width:70ch}
+.succ p{color:var(--tx2);font-size:15.5px;line-height:1.55;max-width:none}
 
 /* ===== diagrama: pacote x uso ===== */
 .pack{background:var(--s1);border:1px solid var(--rule);border-radius:16px;padding:22px}
@@ -263,8 +264,8 @@ h2{font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-.025em;max-wi
 .ret span{position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);background:var(--bg);padding:3px 12px;border-radius:999px;border:1px solid var(--g);color:var(--g2);font-size:13px;font-weight:500;white-space:nowrap}
 
 /* ===== por que não só internamente ===== */
-.qt{margin:6px 0 0;max-width:920px}
-.qt p{text-wrap:balance;font-family:var(--hd);font-weight:600;font-size:clamp(28px,3vw,42px);line-height:1.15;letter-spacing:-.02em}
+.qt{margin:6px 0 0;max-width:none}
+.qt p{white-space:nowrap;font-family:var(--hd);font-weight:600;font-size:clamp(28px,3vw,42px);line-height:1.15;letter-spacing:-.02em}
 .qt cite{display:block;margin-top:12px;font-style:normal;font-size:15px;color:var(--g2)}
 .why{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;margin-top:34px;border-top:1px solid var(--rule);padding-top:26px}
 .wc h3{font-family:var(--hd);font-size:20px;font-weight:600;margin-bottom:8px}
@@ -466,7 +467,7 @@ h2{font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-.025em;max-wi
 .av p{font-size:15.5px;line-height:1.55;color:var(--tx2)}
 .av.main{background:var(--gd);border-color:var(--g)}
 .av.main h3{color:#fff}.av.main p{color:#D4EBDD}
-.sec{margin-top:22px;font-size:15px;line-height:1.5;color:var(--tx2);max-width:90ch}
+.sec{margin-top:44px;font-size:15px;line-height:1.5;color:var(--tx2);max-width:none}
 .sec span{display:inline-block;font-family:var(--hd);font-size:13px;color:var(--mut);border:1px solid var(--rule);border-radius:999px;padding:2px 10px;margin-right:10px}
 
 /* ===== o que a unidade faz ===== */
@@ -481,6 +482,25 @@ h2{font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-.025em;max-wi
 .plist{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
 .plist span{font-size:14.5px;padding:6px 12px;border-radius:999px;border:1px solid var(--g);color:var(--g2);background:rgba(91,191,142,.08)}
 .plist span.more{border-color:var(--rule);color:var(--mut);background:transparent}
+/* ===== potencial ===== */
+.waf.pot{max-width:none;margin:30px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.pot .wh{margin-bottom:16px}
+.pot-r{display:flex;flex-direction:column;gap:26px}
+.pot .li{margin:0;padding:16px 18px;border:1px solid var(--rule);border-radius:14px}
+.pot .li b{font-size:34px}
+.pot .li span{font-size:15.5px}
+.pot .li small{opacity:1;font-size:14px;margin-top:10px}
+.pot .ls{border-color:rgba(91,191,142,.45)}
+.pot .plist{margin-top:12px}
+.pot .plist span{display:inline-block;font-size:13.5px;color:var(--g2)}
+.pot .plist span.more{color:var(--mut)}
+.pot .note{margin-top:0}
+
+:root{--z:1}
+@media(min-width:1200px) and (min-height:840px){:root{--z:1.08}}
+@media(min-width:1600px) and (min-height:900px){:root{--z:1.2}}
+.slide>.fn{position:absolute;left:0;right:0;bottom:58px;margin:0 auto;width:min(calc(1400px*var(--z)),calc(100% - 144px));font-size:calc(13px*var(--z))}
+@media(max-width:960px){.slide>.fn{position:static;margin-top:20px}}
 /* next */
 .next{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;margin-top:32px;border-top:1px solid var(--rule)}
 .nx{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:22px 0;border-bottom:1px solid var(--rule)}
@@ -520,6 +540,7 @@ h2{font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-.025em;max-wi
   .shift{margin:0;max-width:none}
   .rs{grid-template-columns:1fr;gap:28px}
   .adv{grid-template-columns:1fr}
+  .waf.pot{grid-template-columns:1fr;gap:28px}
   .rs-n .num{font-size:30px}
   .prd{grid-template-columns:1fr}
   .prd-f{grid-template-columns:1fr;gap:6px}
@@ -681,24 +702,19 @@ h2{font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-.025em;max-wi
   <div class="wrap">
     <p class="lbl in">O potencial</p>
     <h2 class="in d1">R$ 3 milhões por ano em sistemas que podem virar produto.</h2>
-    <div class="split" style="align-items:center;margin-top:8px">
-      <div>
-        <p class="lead in d1">Dos R$ 5 milhões que o FB gasta por ano com tecnologia, R$ 3 milhões vão para sistemas de mercado. Cada um resolve um problema que outras escolas também têm, e cada um pode nascer no FB e ser vendido fora.</p>
-        <div class="plist in d2">
-          <span>Lecom</span><span>AgendaEdu</span><span>Evolucional</span><span>Estuda.com</span><span>ERP</span><span class="more">e outros</span>
-        </div>
-        <p class="note in d3">Nem tudo é substituível: antivírus e pen test, por exemplo, continuam contratados.</p>
-      </div>
-      <div class="in d2">
-      <div class="waf" aria-label="Gasto anual do FB com tecnologia: R$ 5 milhões, sendo R$ 3 milhões em sistemas contratados e R$ 2 milhões em demais custos">
+    <p class="lead in d1">Cada sistema que o FB contrata resolve um problema que outras escolas também têm. Cada um pode nascer no FB e ser vendido fora.</p>
+    <div class="waf pot in d2" aria-label="Gasto anual do FB com tecnologia: R$ 5 milhões, sendo R$ 3 milhões em sistemas contratados e R$ 2 milhões em demais custos">
+      <div class="pot-l">
         <div class="wh"><span class="wt">R$ 5 mi</span><span class="ws">por ano em tecnologia</span></div>
         <div class="grid"><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i></div>
-        <div class="wl">
-          <div class="li ls" tabindex="0"><i></i><div><b>R$ 3 mi</b><span>Sistemas contratados</span><small>Lecom, AgendaEdu, Evolucional, Estuda.com, ERP e outros. Cada contrato é um produto em potencial.</small></div></div>
-          <div class="li lo" tabindex="0"><i></i><div><b>R$ 2 mi</b><span>Demais custos de TI</span><small>Infraestrutura, equipe e serviços que não são contratos de software.</small></div></div>
-        </div>
         <p class="wn">Cada quadrado representa R$ 100 mil.</p>
-    </div>
+      </div>
+      <div class="pot-r">
+        <div class="li ls" tabindex="0"><i></i><div><b>R$ 3 mi</b><span>Sistemas contratados</span>
+          <div class="plist"><span>Lecom</span><span>AgendaEdu</span><span>Evolucional</span><span>Estuda.com</span><span>ERP</span><span class="more">e outros</span></div>
+          <small>Cada contrato é um produto em potencial.</small></div></div>
+        <div class="li lo" tabindex="0"><i></i><div><b>R$ 2 mi</b><span>Demais custos de TI</span><small>Infraestrutura, equipe e serviços que não são contratos de software.</small></div></div>
+        <p class="note">Nem tudo é substituível: antivírus e pen test, por exemplo, continuam contratados.</p>
       </div>
     </div>
   </div>
@@ -767,8 +783,9 @@ h2{font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-.025em;max-wi
         <div class="vr hi"><b>Pedagógico</b><span>Previsto, só para escolas da Arco</span><span>Diferencial: conteúdo do FB Online e do SFB</span></div>
       </div>
     </div>
-    <p class="note in d3">Fontes: site e blog do Meu Arco, site e blog do isaac. Gestão e financeiro chegam pelo isaac, primeira solução integrada. A data do pedagógico diverge: 2027 no site, 2028 na página de migração do ClassApp.</p>
+    
   </div>
+  <p class="note fn in d3">Fontes: site e blog do Meu Arco, site e blog do isaac. Gestão e financeiro chegam pelo isaac, primeira solução integrada. A data do pedagógico diverge: 2027 no site, 2028 na página de migração do ClassApp.</p>
 </section>
 
 <section class="slide" aria-label="Distribuição">
@@ -786,8 +803,9 @@ h2{font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-.025em;max-wi
       </div>
       <div class="cn4 end"><h3>Outras escolas</h3><p>Usam a mesma solução.</p></div>
     </div>
-    <p class="note in d3">A economia como cliente zero é um ganho secundário. Participação do FB em cada canal: modelo a definir.</p>
+    
   </div>
+  <p class="note fn in d3">A economia como cliente zero é um ganho secundário. Participação do FB em cada canal: modelo a definir.</p>
 </section>
 
 <section class="slide" aria-label="Por que o FB sai na frente">
@@ -903,6 +921,7 @@ document.querySelectorAll('.av,.sh-c,.pc,.hc-b,.bu-mid,.stp .blk,.pp,.nd,.cn4,.c
   el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top)+'px')});
 });
 
+function fitQ(){document.querySelectorAll('.qt p').forEach(q=>{q.style.fontSize='';const w=q.parentElement.clientWidth;let f=parseFloat(getComputedStyle(q).fontSize);while(q.scrollWidth>w&&f>20){f-=1;q.style.fontSize=f+'px'}})}
 function fitH(){document.querySelectorAll('.slide h2').forEach(h=>{h.style.fontSize='';h.style.textWrap='';
   const lh=()=>parseFloat(getComputedStyle(h).lineHeight);let f=parseFloat(getComputedStyle(h).fontSize);
   const one=()=>h.getBoundingClientRect().height<lh()*1.5*(h.getBoundingClientRect().height/h.offsetHeight||1);
@@ -912,9 +931,10 @@ function fitH(){document.querySelectorAll('.slide h2').forEach(h=>{h.style.fontS
   vis.style.visibility=was})}
 function fitS(){const desk=matchMedia('(min-width:961px)').matches;S.forEach(sl=>{const w=sl.querySelector('.wrap');w.style.zoom='';if(!desk)return;
   const cs=getComputedStyle(sl),avail=sl.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
+  const fn=sl.querySelector(':scope>.fn');let av=avail;if(fn){const need=58+fn.offsetHeight+18-parseFloat(cs.paddingBottom);if(need>0)av-=need}
   const base=parseFloat(getComputedStyle(w).zoom)||1,h=w.getBoundingClientRect().height;
-  if(h>avail)w.style.zoom=(base*avail/h*0.98).toFixed(3)})}
-function fitAll(){fitH();fitS()}
+  if(h>av)w.style.zoom=(base*av/h*0.98).toFixed(3)})}
+function fitAll(){fitH();fitQ();fitS()}
 fitAll();addEventListener('resize',fitAll);addEventListener('load',fitAll);if(document.fonts)document.fonts.ready.then(fitAll);
 ui();
 addEventListener('hashchange',()=>{const k=parseInt(location.hash.slice(1),10);if(k>=1&&k<=T&&k-1!==c)go(k-1)});
