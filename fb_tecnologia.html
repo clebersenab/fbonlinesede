@@ -483,7 +483,9 @@ h2{font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-.025em;max-wi
 .plist span{font-size:14.5px;padding:6px 12px;border-radius:999px;border:1px solid var(--g);color:var(--g2);background:rgba(91,191,142,.08)}
 .plist span.more{border-color:var(--rule);color:var(--mut);background:transparent}
 /* ===== potencial ===== */
-.waf.pot{max-width:none;margin:30px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.waf.pot{max-width:none;margin:14px 0 0;display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"wh ." "grid cards" "wn cards";column-gap:64px;row-gap:0;align-items:start}
+.pot .wh{margin-bottom:16px}
+.pot-h{margin-top:34px}
 .pot .wh{margin-bottom:16px}
 .pot-r{display:flex;flex-direction:column;gap:26px}
 .pot .li{margin:0;padding:16px 18px;border:1px solid var(--rule);border-radius:14px}
@@ -540,7 +542,7 @@ h2{font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-.025em;max-wi
   .shift{margin:0;max-width:none}
   .rs{grid-template-columns:1fr;gap:28px}
   .adv{grid-template-columns:1fr}
-  .waf.pot{grid-template-columns:1fr;gap:28px}
+  .waf.pot{grid-template-columns:1fr;grid-template-areas:"wh" "grid" "wn" "cards";row-gap:12px}
   .rs-n .num{font-size:30px}
   .prd{grid-template-columns:1fr}
   .prd-f{grid-template-columns:1fr;gap:6px}
@@ -701,15 +703,11 @@ h2{font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-.025em;max-wi
 <section class="slide" aria-label="Potencial">
   <div class="wrap">
     <p class="lbl in">O potencial</p>
-    <h2 class="in d1">R$ 3 milhões por ano em sistemas que podem virar produto.</h2>
-    <p class="lead in d1">Cada sistema que o FB contrata resolve um problema que outras escolas também têm. Cada um pode nascer no FB e ser vendido fora.</p>
-    <div class="waf pot in d2" aria-label="Gasto anual do FB com tecnologia: R$ 5 milhões, sendo R$ 3 milhões em sistemas contratados e R$ 2 milhões em demais custos">
-      <div class="pot-l">
-        <div class="wh"><span class="wt">R$ 5 mi</span><span class="ws">por ano em tecnologia</span></div>
-        <div class="grid"><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i></div>
-        <p class="wn">Cada quadrado representa R$ 100 mil.</p>
-      </div>
-      <div class="pot-r">
+    <div class="waf pot in d1" aria-label="Gasto anual do FB com tecnologia: R$ 5 milhões, sendo R$ 3 milhões em sistemas contratados e R$ 2 milhões em demais custos">
+      <div class="wh" style="grid-area:wh"><span class="wt">R$ 5 mi</span><span class="ws">por ano em tecnologia</span></div>
+      <div class="grid" style="grid-area:grid"><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w s"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i><i class="w o"></i></div>
+      <p class="wn" style="grid-area:wn">Cada quadrado representa R$ 100 mil.</p>
+      <div class="pot-r" style="grid-area:cards">
         <div class="li ls" tabindex="0"><i></i><div><b>R$ 3 mi</b><span>Sistemas contratados</span>
           <div class="plist"><span>Lecom</span><span>AgendaEdu</span><span>Evolucional</span><span>Estuda.com</span><span>ERP</span><span class="more">e outros</span></div>
           <small>Cada contrato é um produto em potencial.</small></div></div>
@@ -717,6 +715,8 @@ h2{font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-.025em;max-wi
         <p class="note">Nem tudo é substituível: antivírus e pen test, por exemplo, continuam contratados.</p>
       </div>
     </div>
+    <h2 class="pot-h in d2">R$ 3 milhões por ano em sistemas que podem virar produto.</h2>
+    <p class="lead in d2">Cada sistema que o FB contrata resolve um problema que outras escolas também têm. Cada um pode nascer no FB e ser vendido fora.</p>
   </div>
 </section>
 
