@@ -55,6 +55,18 @@ h1{font-family:var(--hd);font-weight:600;font-size:34px;letter-spacing:-.02em;li
 .hnav button{width:32px;height:32px;border-radius:50%;border:1px solid var(--rule);color:var(--tx2);font-size:15px;line-height:1;transition:all .2s}
 .hnav button:hover:not(:disabled){border-color:var(--g);color:var(--tx)}
 .hnav button:disabled{opacity:.35;cursor:default}
+.holw{position:relative;min-width:0}
+.holw::before,.holw::after{content:"";position:absolute;top:0;bottom:0;width:70px;z-index:1;pointer-events:none;opacity:0;transition:opacity .25s}
+.holw::before{left:0;background:linear-gradient(90deg,var(--s1),rgba(20,37,61,0))}
+.holw::after{right:0;background:linear-gradient(270deg,var(--s1),rgba(20,37,61,0))}
+.holw.more-l::before,.holw.more-r::after{opacity:1}
+.hedge{position:absolute;top:50%;z-index:2;width:38px;height:38px;margin-top:-19px;border-radius:50%;background:var(--g);color:var(--ink);font-size:20px;font-weight:600;line-height:1;box-shadow:0 6px 18px rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:opacity .25s,transform .2s}
+.hedge.l{left:6px}.hedge.r{right:6px}
+.holw.more-l .hedge.l,.holw.more-r .hedge.r{opacity:1;pointer-events:auto}
+.hedge:hover{transform:scale(1.08)}
+.holw.more-r .hedge.r{animation:nudge 1.6s ease-in-out 2}
+@keyframes nudge{0%,100%{translate:0}50%{translate:4px}}
+@media(prefers-reduced-motion:reduce){.holw.more-r .hedge.r{animation:none}}
 .hol{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding-bottom:2px}
 .hol::-webkit-scrollbar{display:none}
 .hol .ho1{flex:0 0 228px;scroll-snap-align:start}
@@ -351,11 +363,12 @@ function renderHO(){
   const groups={};D.colaboradores.forEach(c=>{const k=c.equipe+'|'+c.ho.join(',');(groups[k]=groups[k]||{eq:c.equipe,ho:c.ho,p:[]}).p.push(short(c.nome))});
   const extra={'Desenvolvimento':['Iuri','Alex']};
   const G=Object.values(groups).sort((a,b)=>a.eq.localeCompare(b.eq));
-  $('#hoc').innerHTML='<div class="hoh"><h2>Home office<br>por equipe</h2><div class="hnav"><button type="button" id="hprev" aria-label="Anterior">‹</button><button type="button" id="hnext" aria-label="Próximo">›</button></div></div><div class="hol" id="hol">'+G.map(g=>{const ex=(extra[g.eq]||[]);
+  $('#hoc').innerHTML='<div class="hoh"><h2>Home office<br>por equipe</h2><div class="hnav"><button type="button" id="hprev" aria-label="Anterior">‹</button><button type="button" id="hnext" aria-label="Próximo">›</button></div></div><div class="holw" id="holw"><button type="button" class="hedge l" id="hel" aria-label="Ver cards anteriores">‹</button><button type="button" class="hedge r" id="her" aria-label="Ver mais cards">›</button><div class="hol" id="hol">'+G.map(g=>{const ex=(extra[g.eq]||[]);
     return `<div class="ho1"><b>${g.eq}</b><div class="dd">${['seg','ter','qua','qui','sex'].map((d,i)=>`<span class="${g.ho.includes(i)?'on':''}">${d}</span>`).join('')}</div>
-    <small>${g.ho.length?'Home office '+g.ho.map(i=>WD[i]).join(' e '):'Sem home office'}: ${g.p.join(', ')}${ex.length?` <em>(${ex.join(' e ')} não aparece${ex.length>1?'m':''} no relatório de ponto)</em>`:''}</small></div>`}).join('')+'</div>';
-  const hol=$('#hol'),pv=$('#hprev'),nx=$('#hnext');
-  const upd=()=>{pv.disabled=hol.scrollLeft<=2;nx.disabled=hol.scrollLeft+hol.clientWidth>=hol.scrollWidth-2};
+    <small>${g.ho.length?'Home office '+g.ho.map(i=>WD[i]).join(' e '):'Sem home office'}: ${g.p.join(', ')}${ex.length?` <em>(${ex.join(' e ')} não aparece${ex.length>1?'m':''} no relatório de ponto)</em>`:''}</small></div>`}).join('')+'</div></div>';
+  const hol=$('#hol'),pv=$('#hprev'),nx=$('#hnext'),hw=$('#holw');
+  const upd=()=>{const st=hol.scrollLeft<=2,en=hol.scrollLeft+hol.clientWidth>=hol.scrollWidth-2;pv.disabled=st;nx.disabled=en;hw.classList.toggle('more-r',!en);hw.classList.toggle('more-l',!st)};
+  $('#hel').onclick=()=>hol.scrollBy({left:-hol.clientWidth*.8});$('#her').onclick=()=>hol.scrollBy({left:hol.clientWidth*.8});
   pv.onclick=()=>hol.scrollBy({left:-hol.clientWidth*.8});nx.onclick=()=>hol.scrollBy({left:hol.clientWidth*.8});
   hol.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
 }
