@@ -49,7 +49,15 @@ h1{font-family:var(--hd);font-weight:600;font-size:34px;letter-spacing:-.02em;li
 .seg button.on{background:var(--s3);color:var(--tx)}
 .hoc{margin-bottom:14px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
 .hoc h2{font-family:var(--hd);font-size:17px;font-weight:600;white-space:nowrap;padding-top:4px}
-.hol{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}
+.hoc{grid-template-columns:150px minmax(0,1fr)}
+.hoh{display:flex;flex-direction:column;gap:12px}
+.hnav{display:flex;gap:6px}
+.hnav button{width:32px;height:32px;border-radius:50%;border:1px solid var(--rule);color:var(--tx2);font-size:15px;line-height:1;transition:all .2s}
+.hnav button:hover:not(:disabled){border-color:var(--g);color:var(--tx)}
+.hnav button:disabled{opacity:.35;cursor:default}
+.hol{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding-bottom:2px}
+.hol::-webkit-scrollbar{display:none}
+.hol .ho1{flex:0 0 228px;scroll-snap-align:start}
 .ho1{background:var(--bg);border:1px solid var(--rule);border-radius:12px;padding:12px 14px}
 .ho1 b{font-family:var(--hd);font-size:15px;font-weight:600}
 .ho1 .dd{display:flex;gap:4px;margin:8px 0}
@@ -57,7 +65,7 @@ h1{font-family:var(--hd);font-weight:600;font-size:34px;letter-spacing:-.02em;li
 .ho1 .dd span.on{background:var(--s3);border-color:#3d5a85;color:#cfe0f7}
 .ho1 small{display:block;font-size:12px;color:var(--tx2);line-height:1.45}
 .ho1 small em{font-style:normal;color:var(--mut)}
-@media(max-width:800px){.hoc{grid-template-columns:1fr}}
+@media(max-width:800px){.hoc{grid-template-columns:1fr}.hoh{flex-direction:row;justify-content:space-between;align-items:center}}
 .acts{display:flex;gap:6px}
 .ab{padding:7px 12px;border-radius:999px;border:1px solid var(--rule);color:var(--tx2);font-size:12.5px;transition:all .2s}
 .ab:hover{border-color:var(--g);color:var(--tx)}
@@ -343,9 +351,13 @@ function renderHO(){
   const groups={};D.colaboradores.forEach(c=>{const k=c.equipe+'|'+c.ho.join(',');(groups[k]=groups[k]||{eq:c.equipe,ho:c.ho,p:[]}).p.push(short(c.nome))});
   const extra={'Desenvolvimento':['Iuri','Alex']};
   const G=Object.values(groups).sort((a,b)=>a.eq.localeCompare(b.eq));
-  $('#hoc').innerHTML='<h2>Home office<br>por equipe</h2><div class="hol">'+G.map(g=>{const ex=(extra[g.eq]||[]);
+  $('#hoc').innerHTML='<div class="hoh"><h2>Home office<br>por equipe</h2><div class="hnav"><button type="button" id="hprev" aria-label="Anterior">‹</button><button type="button" id="hnext" aria-label="Próximo">›</button></div></div><div class="hol" id="hol">'+G.map(g=>{const ex=(extra[g.eq]||[]);
     return `<div class="ho1"><b>${g.eq}</b><div class="dd">${['seg','ter','qua','qui','sex'].map((d,i)=>`<span class="${g.ho.includes(i)?'on':''}">${d}</span>`).join('')}</div>
     <small>${g.ho.length?'Home office '+g.ho.map(i=>WD[i]).join(' e '):'Sem home office'}: ${g.p.join(', ')}${ex.length?` <em>(${ex.join(' e ')} não aparece${ex.length>1?'m':''} no relatório de ponto)</em>`:''}</small></div>`}).join('')+'</div>';
+  const hol=$('#hol'),pv=$('#hprev'),nx=$('#hnext');
+  const upd=()=>{pv.disabled=hol.scrollLeft<=2;nx.disabled=hol.scrollLeft+hol.clientWidth>=hol.scrollWidth-2};
+  pv.onclick=()=>hol.scrollBy({left:-hol.clientWidth*.8});nx.onclick=()=>hol.scrollBy({left:hol.clientWidth*.8});
+  hol.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
 }
 function renderRules(){
   const r=['Jornada de 40h semanais: 8h por dia útil (segunda a sexta, exceto feriados).','Acompanhamento a partir de 15/10/2026. Dias anteriores não entram no saldo.',
