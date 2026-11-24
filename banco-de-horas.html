@@ -53,6 +53,8 @@ h1{font-family:var(--hd);font-weight:600;font-size:34px;letter-spacing:-.02em;li
 .hoh{display:flex;flex-direction:column;gap:12px}
 .holw{display:flex;align-items:center;gap:10px;min-width:0}
 .holw .hol{flex:1;min-width:0}
+.holw .hol{--fl:0px;--fr:0px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 var(--fl),#000 calc(100% - var(--fr)),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 var(--fl),#000 calc(100% - var(--fr)),transparent 100%)}
+.holw.fl .hol{--fl:72px}.holw.fr .hol{--fr:96px}
 .hedge{flex:0 0 36px;height:36px;border-radius:50%;border:1px solid var(--g);color:var(--g2);font-size:20px;line-height:1;visibility:hidden;opacity:0;transition:opacity .2s,background .2s,color .2s}
 .hedge.on{visibility:visible;opacity:1}
 .hedge:hover{background:var(--g);color:var(--ink)}
@@ -356,7 +358,7 @@ function renderHO(){
     return `<div class="ho1"><b>${g.eq}</b><div class="dd">${['seg','ter','qua','qui','sex'].map((d,i)=>`<span class="${g.ho.includes(i)?'on':''}">${d}</span>`).join('')}</div>
     <small>${g.ho.length?'Home office '+g.ho.map(i=>WD[i]).join(' e '):'Sem home office'}: ${g.p.join(', ')}${ex.length?` <em>(${ex.join(' e ')} não aparece${ex.length>1?'m':''} no relatório de ponto)</em>`:''}</small></div>`}).join('')+'</div><button type="button" class="hedge" id="her" aria-label="Ver mais cards">›</button></div>';
   const hol=$('#hol'),hw=$('#holw'),hl=$('#hel'),hr=$('#her');
-  const upd=()=>{hl.classList.toggle('on',hol.scrollLeft>2);hr.classList.toggle('on',hol.scrollLeft+hol.clientWidth<hol.scrollWidth-2)};
+  const upd=()=>{const l=hol.scrollLeft>2,r=hol.scrollLeft+hol.clientWidth<hol.scrollWidth-2;hl.classList.toggle('on',l);hr.classList.toggle('on',r);hw.classList.toggle('fl',l);hw.classList.toggle('fr',r)};
   hl.onclick=()=>hol.scrollBy({left:-hol.clientWidth*.8});hr.onclick=()=>hol.scrollBy({left:hol.clientWidth*.8});
   hol.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
 }
