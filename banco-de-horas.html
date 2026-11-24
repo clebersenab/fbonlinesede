@@ -374,7 +374,7 @@ async function load(pw){
   const r=await fetch(API,{headers:{'x-senha':pw},cache:'no-store'});
   let j={};try{j=await r.json()}catch(e){}
   if(r.status===401)throw new Error('Senha incorreta.');
-  if(r.status===404)throw new Error(j.erro||'Ainda não há dados no banco. Entre com a senha de administrador e use "Atualizar dados".');
+  if(r.status===404)throw new Error('Ainda não há dados carregados no banco.');
   if(!r.ok)throw new Error(j.erro||'Não foi possível carregar os dados ('+r.status+').');
   return j;
 }
@@ -384,7 +384,7 @@ function show(j){
   const sub=document.getElementById('sub');if(sub&&j.atualizado_em)sub.insertAdjacentHTML('beforeend',` <span class="ver">Dados atualizados em ${new Date(j.atualizado_em).toLocaleString('pt-BR')}.</span>`);
 }
 document.getElementById('gform').onsubmit=async e=>{e.preventDefault();const pw=document.getElementById('gpw').value;gerr.textContent='Carregando…';
-  try{const j=await load(pw);SENHA=pw;ss.set('bh_senha',pw);gerr.textContent='';show(j)}catch(err){gerr.textContent=err.message;if(/dados no banco/.test(err.message)){SENHA=pw;ss.set('bh_senha',pw);openUp()}}};
+  try{const j=await load(pw);SENHA=pw;ss.set('bh_senha',pw);gerr.textContent='';show(j)}catch(err){gerr.textContent=err.message}};
 if(SENHA){load(SENHA).then(show).catch(err=>{gerr.textContent=err.message;if(/Senha/.test(err.message))ss.del('bh_senha')})}
 document.getElementById('bOut').onclick=()=>{ss.del('bh_senha');location.reload()};
 document.getElementById('bExp').onclick=()=>{if(!DATA)return;const b=new Blob([JSON.stringify(DATA)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='banco-de-horas-dados.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)};

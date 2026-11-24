@@ -1,10 +1,22 @@
 import { neon } from '@neondatabase/serverless';
-import { timingSafeEqual } from 'node:crypto';
+import { timingSafeEqual, createDecipheriv } from 'node:crypto';
+import { gunzipSync } from 'node:zlib';
+import seed from './_seed.js';
 
 function igual(a, b) {
   if (!a || !b) return false;
   const x = Buffer.from(String(a)), y = Buffer.from(String(b));
   return x.length === y.length && timingSafeEqual(x, y);
+}
+
+function dadosIniciais(chave) {
+  if (!chave || !seed || !seed.data) return null;
+  try {
+    const d = createDecipheriv('aes-256-gcm', Buffer.from(chave, 'hex'), Buffer.from(seed.iv, 'base64'));
+    d.setAuthTag(Buffer.from(seed.tag, 'base64'));
+    const gz = Buffer.concat([d.update(Buffer.from(seed.data, 'base64')), d.final()]);
+    return JSON.parse(gunzipSync(gz).toString('utf8'));
+  } catch (e) { console.error('seed', e.message); return null; }
 }
 
 function valido(d) {
@@ -29,7 +41,14 @@ export async function handle(req, res, sql, env) {
 
   if (req.method === 'GET') {
     if (!leitura) return res.status(401).json({ erro: 'Senha incorreta.' });
-    const r = await sql`select id, criado_em, payload from banco_horas order by id desc limit 1`;
+    let r = await sql`select id, criado_em, payload from banco_horas order by id desc limit 1`;
+    if (!r.length) {
+      const ini = dadosIniciais(env.SEED_KEY);
+      if (valido(ini)) {
+        await sql`insert into banco_horas (payload) values (${JSON.stringify(ini)}::jsonb)`;
+        r = await sql`select id, criado_em, payload from banco_horas order by id desc limit 1`;
+      }
+    }
     if (!r.length) return res.status(404).json({ erro: 'Ainda não há dados no banco.' });
     return res.status(200).json({ versao: r[0].id, atualizado_em: r[0].criado_em, dados: r[0].payload });
   }
