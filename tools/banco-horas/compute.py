@@ -15,7 +15,7 @@ HO_DEFAULT=[2]  # quarta (Mon=0)
 EQUIPES={'Pedagógico':{'ho':[],'chapas':['00021','00038','00040']},
  'Desenvolvimento':{'ho':[1,3],'chapas':['00030']},
  'Design':{'ho':[2,3],'chapas':['00012']}}
-EQUIPE_EXTRA={'00001':'Comercial, administrativo e CS'}
+EQUIPE_EXTRA={'00001':'Comercial, administrativo e CS','00023':'Comercial','00016':'CS','00036':'Marketing'}
 SEM_HO=set()
 FALTAS={}  # {'00030':['2026-10-27',...]} só quando informado
 def equipe(ch):
@@ -99,7 +99,8 @@ def run(months_files,out):
  'dia_nao_util_trabalhado':'entra inteiro como crédito (com desconto de almoço acima de 6h)',
  'feriados':'nacionais, estaduais (CE) e municipais (Fortaleza); pontos facultativos contam como dia útil',
  'acumulado':'saldo de cada mês somado aos meses anteriores'}
-    json.dump({'regras':REGRAS,'equipes':{n:{'ho':e['ho']} for n,e in EQUIPES.items()},'faltas':FALTAS,'gerado':dt.date.today().isoformat(),'inicio':START.isoformat(),'jornada':JORNADA,'feriados':FER,'colaboradores':list(emps.values()),'meses':months},open(out,'w'),ensure_ascii=False)
+    import time
+    json.dump({'revisao':int(time.time()),'regras':REGRAS,'equipes':{n:{'ho':e['ho']} for n,e in EQUIPES.items()},'faltas':FALTAS,'gerado':dt.date.today().isoformat(),'inicio':START.isoformat(),'jornada':JORNADA,'feriados':FER,'colaboradores':list(emps.values()),'meses':months},open(out,'w'),ensure_ascii=False)
     for c,v in months[-1]['colab'].items(): 
         t=v['tot'];print(c,emps[c]['nome'][:28].ljust(28),'saldo',t['saldo'],'acum',t['acumulado'],'inc',t['inc'],'just',t['just'],'ho',t['ho'],'pres',t['presenca'])
 if __name__=='__main__': run(sys.argv[2:],sys.argv[1])
