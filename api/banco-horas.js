@@ -42,7 +42,7 @@ export async function handle(req, res, sql, env) {
   if (req.method === 'GET') {
     if (!leitura) return res.status(401).json({ erro: 'Senha incorreta.' });
     let r = await sql`select id, criado_em, payload from banco_horas order by id desc limit 1`;
-    if (!r.length) {
+    if (!r.length || !r[0].payload.regras) {
       const ini = dadosIniciais(env.SEED_KEY);
       if (valido(ini)) {
         await sql`insert into banco_horas (payload) values (${JSON.stringify(ini)}::jsonb)`;
