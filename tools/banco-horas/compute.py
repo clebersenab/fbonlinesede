@@ -15,7 +15,7 @@ HO_DEFAULT=[2]  # quarta (Mon=0)
 EQUIPES={'Pedagógico':{'ho':[],'chapas':['00021','00038','00040']},
  'Desenvolvimento':{'ho':[1,3],'chapas':['00030']},
  'Design':{'ho':[2,3],'chapas':['00012']}}
-EQUIPE_EXTRA={'00001':'Comercial, administrativo e CS','00023':'Comercial','00016':'CS','00036':'Marketing'}
+EQUIPE_EXTRA={'00001':'Administrativo','00023':'Comercial','00016':'CS','00036':'Marketing'}
 SEM_HO=set()
 FALTAS={}  # {'00030':['2026-10-27',...]} só quando informado
 def equipe(ch):
